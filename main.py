@@ -5,8 +5,17 @@ def parse_line(line: str) -> tuple:
     country, area, population = items
     return country, area, population
 
+def sort_by_area(file_name):
+    items = {}
+    with open(file_name) as file:
+        for line in file:
+            country, area, population = parse_line(line)
+            items[country] = area
+    sorted_items_by_area = sorted(items.items(), key=lambda x: x[1])
+    return sorted_items_by_area
+
 def main(file_name):
-    pass
+    print (sort_by_area(file_name))
 
 
 if __name__ == '__main__':
