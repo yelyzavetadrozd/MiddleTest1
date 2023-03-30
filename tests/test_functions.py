@@ -29,3 +29,17 @@ def test_sort_by_area(prepare_text_file):
 
     assert set(expected.keys()) == set(result.keys())
     assert all([expected[key] == item for key, item in result.items()])
+
+def test_sort_by_population(prepare_text_file):
+    expected = {'Croatia': 4291000,
+                'Bulgaria': 6520314,
+                'Portugal': 10347892,
+                'Poland': 38244000,
+                'Ukraine': 40997699,
+                'Spain': 47500000,
+                'Italy': 60588306
+                }
+    result = total_expenses_by_categories(prepare_text_file)
+
+    assert set(expected.keys()) == set(result.keys())
+    assert all([expected[key] == item for key, item in result.items()])
