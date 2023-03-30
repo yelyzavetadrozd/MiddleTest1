@@ -10,7 +10,7 @@ def sort_by_area(file_name):
     with open(file_name) as file:
         for line in file:
             country, area, _ = parse_line(line)
-            items[country] = area
+            items[country] = int(area)
     sorted_items_by_area = sorted(items.items(), key=lambda x: x[1])
     return sorted_items_by_area
 
