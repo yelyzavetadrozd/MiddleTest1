@@ -43,3 +43,14 @@ def test_sort_by_population(prepare_text_file):
 
     assert set(expected.keys()) == set(result.keys())
     assert all([expected[key] == item for key, item in result.items()])
+
+@pytest.mark.parametrize('line, *results', [('Ukraine 603549 40997699', 'Ukraine', 603549, 40997699),
+                                           ('Poland 322575 38244000', 'Poland', 322575, 38244000),
+                                           ('Bulgaria 110993 6520314', 'Bulgaria', 110993, 6520314),
+                                           ('Italy 301338 60588306', 'Italy', 301338, 60588306),
+                                           ('Croatia 56594 4291000', 'Croatia', 56594, 4291000),
+                                           ('Spain 504645 47500000', 'Spain', 504645, 47500000),
+                                           ('Portugal 92225 10347892', 'Portugal', 92225, 10347892)])
+
+def test_parse_line(line, *results):
+    assert parse_line(line) == results
